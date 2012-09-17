@@ -87,8 +87,6 @@ function printArray($array, $spaces = "")
 }
 
 function sanitize($qry) {
-
-
      $separador = ' ';
 
      if (empty($qry)) return $qry; //aseguro no nulos

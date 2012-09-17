@@ -1,10 +1,9 @@
 <?php
-
 const _VIVO = 'Nop';
 const _MUERTO = 'Sip';
 const _DONTKNOW = 'No sep';
 
-include 'dbpedia.inc.php';
+require 'dbpedia.inc.php';
 
 $term=$_REQUEST['qry'];
 
@@ -50,6 +49,7 @@ if (!empty ($term)) {
 </head>
 
 <body style="text-align: center; padding-top: 200px;">
+<a href="https://github.com/julpar/hamuerto"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 <?php /*
 <h1>Debug----</h1>
 <h1>DBPedia Abstract for<?php echo $term ?></h1>
@@ -88,7 +88,7 @@ id="edad">
 <?php if (empty($term)) { ?>
 <form name="simple_bar" method="get" action="redirect.php" >
     <div align="center">      
-    Search:<input type="text" name="qry" size="30" maxlength="50"><input type="submit" value="Murio?">
+    <input type="text" name="qry" size="30" maxlength="50"><input type="submit" value="Murio?">
     </div>
 </form>
 <?php } ?>
