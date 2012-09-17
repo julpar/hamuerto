@@ -9,4 +9,4 @@ Construído y basado en el [tutorial] [1] de John Wright.
 
 Podés ver una versión online de este código en http://hamuerto.com.ar
 
-[1]: http://johnwright.me/blog/sparql-query-in-code-rest-php-and-json-tutorial	"tutorial"
+[1]: http://johnwright.me/blog/sparql-query-in-code-rest-php-and-json-tutorial
