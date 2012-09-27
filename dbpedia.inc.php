@@ -28,7 +28,7 @@ WHERE {
 }
 EOT;
 
-/*
+/* //Pre-optmized Query
 $query = <<<EOT
 PREFIX dbp: <http://dbpedia.org/resource/>
 PREFIX dbp2: <http://dbpedia.org/ontology/>
@@ -86,12 +86,13 @@ function printArray($array, $spaces = "")
    return $retValue;
 }
 
+
 function sanitize($qry) {
      $separador = ' ';
 
      if (empty($qry)) return $qry; //aseguro no nulos
 
-     $qry=str_replace('_',$separador,$qry); //reemplazos de espacios
+     $qry=str_replace('_',$separador,$qry); //reemplazos de espacios     
      
      $terms=explode($separador,$qry); //tokenizer para hacer uppercase
      foreach ($terms as $value) {
@@ -104,5 +105,13 @@ function sanitize($qry) {
 
 function pluralize ($yrs) {
     if ($yrs>1) return 'años';  else return 'año';
+}
+
+function getUrlCtx() {
+
+    $ctx['host']  = $_SERVER['HTTP_HOST'];
+    $ctx['path']  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+    return $ctx;
 }
 ?>

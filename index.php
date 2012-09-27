@@ -5,10 +5,21 @@ const _DONTKNOW = 'No sep';
 
 require 'dbpedia.inc.php';
 
-$term=$_REQUEST['qry'];
+$term=filter_input(INPUT_GET, 'qry', FILTER_SANITIZE_STRING);
+
+
 
 if (!empty ($term)) {
 
+    //Examino el término por la existencia de un espacio, en dicho caso lo
+    //redirijo al subsistema que determinará el URL único y correcto para un sujeto
+    if (strpos($term, ' ')) {
+        $ctx=getUrlCtx();
+        header("Location: http://{$ctx['host']}{$ctx['path']}/redirect.php?qry=$term");
+        exit();
+    }
+
+   //Sanitizamos convenciones internas previo a consulta
    $term=sanitize($term);
 
    $requestURL = getUrlDbpediaAbstract($term);
@@ -28,7 +39,6 @@ if (!empty ($term)) {
 
        if ($rta==_VIVO)
        $parsedDate = date_parse_from_format("Y-m-d",$birthDate );
-
 
        //Calculo de Edad Actual / Años de Muerto
        $date = new DateTime($parsedDate['year']."-".$parsedDate['month']."-".$parsedDate['day']);
